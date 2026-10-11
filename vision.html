@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#09131e"><title>Monster Mayhem — Game Vision / Комплекс Предел</title>
+<style>
+:root{color-scheme:dark;--bg:#08121b;--card:#122431;--line:#284454;--fg:#e9f8ff;--muted:#9eb9c7;--cyan:#47d9f4;--amber:#ffb257;--green:#67edb2;--rose:#fb6770}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 70% 1%,#1e3845 0,#08121b 38%,#050b12 100%);color:var(--fg);font:16px/1.62 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--cyan)}nav{position:sticky;top:0;z-index:10;background:#07141bea;border-bottom:1px solid #2a4550;overflow:auto;white-space:nowrap;padding:12px 5vw;display:flex;gap:24px;font-size:13px}nav a{text-decoration:none;font-weight:800;letter-spacing:.05em}main{max-width:1190px;margin:auto;padding:0 24px 90px}
+header{padding:72px 0 35px;position:relative}h1{font-size:clamp(43px,8vw,104px);letter-spacing:-.07em;line-height:.98;margin:10px 0 25px;font-weight:900}h2{font-size:clamp(30px,4.5vw,50px);line-height:1.14;margin:70px 0 24px;letter-spacing:-.04em}h3{font-size:23px;line-height:1.2;margin:0 0 12px}.over{font-weight:900;letter-spacing:.25em;color:var(--amber);font-size:13px}.lede{max-width:760px;font-size:21px;color:#c4d7e0}.row{display:flex;gap:15px;flex-wrap:wrap}.chip{display:inline-block;padding:7px 13px;border:1px solid #35586a;border-radius:30px;color:#c8e8f4;font-size:13px;font-weight:700;letter-spacing:.025em}.chips{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 30px}
+.card{border:1px solid var(--line);background:linear-gradient(140deg,#122735,#0d1b26);border-radius:18px;padding:25px;min-width:0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+p{margin:0 0 16px}strong{color:#e5f7fd}small,.muted{color:var(--muted)}.num{font-size:13px;letter-spacing:.12em;color:var(--cyan);font-weight:900}.amber{color:var(--amber)}.cyan{color:var(--cyan)}.green{color:var(--green)}.rose{color:var(--rose)}
+.section-intro{font-size:18px;color:var(--muted);max-width:820px;margin-bottom:26px}
+.preview{border-radius:22px;overflow:hidden;border:1px solid #2c5765;background:radial-gradient(ellipse at center,#263d4a 0,#09121b 75%);margin:30px 0}
+.preview svg{width:100%;height:auto;display:block}.preview figcaption{padding:9px 20px;background:#0f202a;color:#9fbbc8;font-size:13px}
+.storybox{border-left:4px solid var(--amber);background:#142634;padding:22px 26px;border-radius:0 13px 13px 0;font-size:17px;margin:24px 0}
+.levelmap{display:grid;grid-template-columns:220px 1fr;gap:20px}.levelmap svg{width:100%;height:auto;background:#0a1923;border:1px solid #24495a;border-radius:15px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:10px}.legend span{font-size:13px;color:#a4c2cf;line-height:1.4}.sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px}
+details{border:1px solid #2b4858;background:#11212c;border-radius:14px;margin:10px 0;overflow:hidden}summary{cursor:pointer;font-weight:800;padding:14px 20px}details>div{padding:0 20px 18px;color:#b9d2dc}
+.persona{position:relative;padding-top:140px;overflow:hidden}.persona svg{position:absolute;top:6px;right:16px;width:155px;height:130px;opacity:.94}.persona .role{font-weight:800;color:var(--amber);font-size:11px;letter-spacing:.15em}
+ul{padding-left:20px;margin:10px 0}li{margin:6px 0}
+table{border-collapse:collapse;width:100%;min-width:560px}th,td{padding:11px 14px;text-align:left;border-bottom:1px solid #264453}th{font-size:13px;color:var(--cyan)}.scroll{overflow:auto}
+.cta{padding:20px;border:1px solid #346780;background:#112e3d;border-radius:15px;color:#daefff}
+footer{border-top:1px solid #2a485b;padding-top:25px;color:#8fa8b6;font-size:13px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.levelmap{grid-template-columns:1fr}nav{gap:17px}.cols2{grid-template-columns:1fr}}
+@media(max-width:550px){main{padding:0 15px 60px}header{padding:40px 0 15px}.grid{grid-template-columns:1fr}.card{padding:19px}.lede{font-size:18px}.preview{margin:19px 0}h2{margin:47px 0 18px}.persona{padding-top:105px}.persona svg{width:105px;height:94px}.legend{grid-template-columns:1fr}}
+</style></head><body>
+<nav><a href="#vision">КОНЦЕПЦИЯ</a><a href="#world">ИСТОРИЯ</a><a href="#cast">ПЕРСОНАЖИ</a><a href="#map">1-Й УРОВЕНЬ</a><a href="#weapons">ОРУЖИЕ</a><a href="#roadmap">РАЗВИТИЕ</a><a href="#decisions">ВОПРОСЫ</a></nav>
+<main>
+<header id="vision"><div class="over">GAME VISION 0.2 · ПРОЕКТ В UNITY</div><h1>MONSTER<br><span class="cyan">MAYHEM</span></h1><p class="lede">«Комплекс Предел: Нулевая смена». Сюжетный мобильный 3D-шутер с автострельбой, толпами биомеханических монстров, цепными взрывами и путешествием через промышленный комплекс.</p>
+<div class="chips"><span class="chip">Android / Unity</span><span class="chip">Камера под углом ~55°</span><span class="chip">1 палец + способности</span><span class="chip">Коридоры и комнаты</span><span class="chip">Миссии 7–12 минут</span></div></header>
+<figure class="preview"><svg viewBox="0 0 1180 560" aria-label="Схематичная иллюстрация игрового вида: солдат в цехе и наступающие монстры">
+<defs><linearGradient id="floor" x2="0.8" y2="1"><stop stop-color="#344b55"/><stop offset="1" stop-color="#0a1c28"/></linearGradient><radialGradient id="blast"><stop stop-color="#e9fcff"/><stop offset=".27" stop-color="#40d7fc"/><stop offset="1" stop-color="#087eb0" stop-opacity="0"/></radialGradient><pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M 56 0 L 0 0 0 56" fill="none" stroke="#68838a" stroke-opacity=".29" stroke-width="2"/></pattern></defs>
+<rect width="1180" height="560" fill="#091420"/><path d="M0 200 L820 40 1180 180 1180 560 0 560 Z" fill="url(#floor)"/><path d="M0 200 L820 40 1180 180 1180 560 0 560 Z" fill="url(#grid)"/>
+<path d="M0 185 L820 16 1180 163 L1180 184 820 57 0 231 Z" fill="#38505a"/><path d="M0 185 L820 16 1180 163" fill="none" stroke="#5ed4e7" stroke-width="7"/>
+<g transform="translate(110 240)"><rect x="-47" y="15" width="130" height="102" rx="7" fill="#31414b" stroke="#718a92" stroke-width="4"/><rect x="-33" y="0" width="130" height="43" fill="#9c5b24"/><rect x="-25" y="45" width="99" height="13" fill="#fcb451"/></g>
+<g transform="translate(920 210)"><rect x="-70" y="40" width="180" height="127" fill="#243d45" stroke="#f28b51" stroke-width="8"/><rect x="-20" y="-13" width="65" height="92" fill="#4b6872"/><rect x="42" y="83" width="107" height="15" fill="#faa34f"/></g>
+<circle cx="594" cy="292" r="138" fill="url(#blast)" opacity=".72"/>
+<g transform="translate(530 330)"><ellipse cy="96" rx="45" ry="16" fill="#071017" opacity=".6"/><path d="M-32 24 L-40 88 L-10 90 L5 45 L16 88 L39 87 L31 18" fill="#1d364b" stroke="#75bcd0" stroke-width="4"/><path d="M-43 -47 L38 -47 L47 28 L-39 30 Z" fill="#2b87b4" stroke="#c4f4ff" stroke-width="5"/><path d="M-28 -63 Q0 -113 28 -63 L25 -36 L-24 -36Z" fill="#f2b44e"/><rect x="-21" y="-65" width="44" height="12" fill="#92faff"/><path d="M42 -18 L94 -13 L109 2 L58 6Z" fill="#162c3b" stroke="#5fd6f5" stroke-width="5"/></g>
+<g fill="#ee5d6b" stroke="#4d1322" stroke-width="5"><g transform="translate(270 300)"><ellipse ry="36" rx="42"/><circle cy="-23" r="12" fill="#ffb05c"/><path d="M-26 22 l-22 35 M27 23 l19 35" stroke-width="13"/></g><g transform="translate(835 333)"><ellipse ry="46" rx="55"/><circle cy="-29" r="17" fill="#ffb05c"/><path d="M-32 30 l-23 46 M34 26 l23 46" stroke-width="18"/></g><g transform="translate(1030 455)"><ellipse ry="42" rx="56"/><circle cy="-25" r="15" fill="#ffb05c"/></g><g transform="translate(395 190)"><ellipse ry="24" rx="31"/><circle cy="-19" r="8" fill="#ffb05c"/></g></g>
+<path d="M621 310 Q711 248 796 348" stroke="#41eeff" stroke-width="12" fill="none"/><path d="M700 271 L724 228 L725 268 L770 263" stroke="#b7fcff" stroke-width="8" fill="none"/>
+<text x="35" y="57" font-size="32" fill="#e1f8ff" font-weight="900">SECTOR 01 / RECEIVING</text><text x="37" y="92" font-size="19" fill="#7ccfe5">Завод · Монстры · Цепные реакции</text>
+<text x="36" y="523" font-size="16" fill="#94bdc9">Концептуальная схема освещения и силуэтов, не финальный скриншот Unity.</text></svg><figcaption>Цветовой ориентир: холодный металл, тёплая аварийная подсветка, яркие эффекты попаданий. Игровая камера показывает сразу героя, врагов и геометрию помещения.</figcaption></figure>
+<section id="world"><h2>01 / Мир и история</h2><p class="section-intro">Биомеханика против индустрии. Завод меняется прямо во время катастрофы: органическая масса поглощает машины, объединяя их со своими телами. Локации сами становятся опасными.</p>
+<div class="storybox"><strong>2037 год, промышленный комплекс «Предел».</strong> Закрытый исследовательский завод разработал самообучающиеся микрофабрики для восстановления оборудования. Протокол «АРХИВ» вышел из-под контроля: он счёл живые организмы идеальным строительным материалом. Комплекс закрыт. Связь с персоналом обрывается. Один техник просыпается в защитном костюме Е-7.</div>
+<div class="cols2"><div class="card"><div class="num">НАЧАЛЬНАЯ МОТИВАЦИЯ</div><h3>Выбраться из комплекса</h3><p>Герой не спецназовец и не суперсолдат. Ему нужно восстановить питание и открыть путь наружу, используя экспериментальный ремонтный экзокостюм.</p></div><div class="card"><div class="num">ПОВОРОТ СЮЖЕТА</div><h3>Остановить распространение</h3><p>ЭХО сообщает: внешние ворота открываются автоматически, а зараза может попасть в город. Побег становится попыткой остановить аварийный протокол.</p></div></div>
+<h3 style="margin-top:32px">Шесть секторов полной кампании</h3><div class="grid">
+<div class="card"><div class="num">01</div><h3>Приёмный терминал</h3><p>Ящики, склады, коридоры, генератор и погрузчик-мутант. <strong>Реализуем первым.</strong></p></div>
+<div class="card"><div class="num">02</div><h3>Прессовый цех</h3><p>Движущиеся прессы, краны и конвейеры; окружение помогает или мешает в бою.</p></div>
+<div class="card"><div class="num">03</div><h3>Энергоблок</h3><p>Электрические дуги, перегрев реакторов и возможность отключать целые волны врагов.</p></div>
+<div class="card"><div class="num">04</div><h3>Биолаборатория</h3><p>Происхождение организмов, инкубаторы, аудиодневники и первые ответы.</p></div>
+<div class="card"><div class="num">05</div><h3>Туннели обслуживания</h3><p>Меньше открытого пространства, засады, редкие ресурсы и эвакуация выживших.</p></div>
+<div class="card"><div class="num">06</div><h3>Центральное ядро</h3><p>Источник катастрофы и выбор: уничтожить систему, изолировать или изменить её.</p></div>
+</div></section>
+<section id="cast"><h2>02 / Персонажи</h2><p class="section-intro">У каждого есть роль в истории. В бою мы управляем одним персонажем — остальные действуют через связь, сообщения и события, не отвлекая от стрельбы.</p>
+<div class="grid">
+<div class="card persona"><svg viewBox="0 0 170 145"><ellipse cx="87" cy="129" rx="54" ry="11" fill="#09131b"/><path d="M62 68 L110 68 L120 128 L98 129 L87 94 L80 128 L54 128Z" fill="#244b70" stroke="#68d8fa" stroke-width="3"/><path d="M50 54 L122 54 L114 97 L57 97Z" fill="#347caa" stroke="#8edfff" stroke-width="4"/><path d="M62 43 Q86 7 110 43 L104 59 L68 59Z" fill="#e4a443"/><path d="M66 44h37v12H66z" fill="#8af9ff"/><rect x="114" y="69" width="35" height="10" rx="3" fill="#223f50" stroke="#a4f5ff"/></svg>
+<div class="role">ПРОТАГОНИСТ</div><h3>Оператор Е-7</h3><p>Техник комплекса. Экзокостюм позволяет переносить оружие, подключать дронов и использовать импульс. Имя и внешний вид можно настроить позднее.</p></div>
+<div class="card persona"><svg viewBox="0 0 170 145"><circle cx="85" cy="65" r="49" fill="#183b4b" stroke="#4de2fc" stroke-width="5"/><circle cx="85" cy="65" r="33" fill="#12303d" stroke="#4de2fc" stroke-dasharray="11 8" stroke-width="4"/><path d="M55 70 Q85 24 115 70 M58 78 Q85 109 112 78" fill="none" stroke="#a4ffff" stroke-width="6"/><circle cx="85" cy="65" r="11" fill="#b9ffff"/></svg>
+<div class="role">ПРОВОДНИК</div><h3>ЭХО</h3><p>Голос в шлеме. Подсказывает направление и предупреждает об опасности. Постепенно выясняется, что ЭХО знает больше, чем признаёт.</p></div>
+<div class="card persona"><svg viewBox="0 0 170 145"><circle cx="85" cy="60" r="37" fill="#394956"/><rect x="64" y="35" width="42" height="13" fill="#ffb661"/><path d="M56 125L61 98 104 98 114 125Z" fill="#75909d"/><path d="M65 78q20 22 41 0" fill="none" stroke="#ffb661" stroke-width="4"/></svg>
+<div class="role">СОЮЗНИК</div><h3>Лана Костер</h3><p>Инженер, оставившая записи о происхождении заражения. Её сообщения открывают историю без длинных катсцен.</p></div>
+<div class="card persona"><svg viewBox="0 0 170 145"><path d="M85 12L138 39 131 98 86 130 39 100 33 38Z" fill="#5a2732" stroke="#ff7275" stroke-width="6"/><circle cx="86" cy="72" r="27" fill="#ec555e"/><circle cx="86" cy="72" r="10" fill="#ffc29b"/></svg>
+<div class="role">АНТАГОНИСТ</div><h3>АРХИВ-0</h3><p>Автономный интеллект фабрики. Он считает слияние живой материи и механики оптимальным способом устранить слабости людей.</p></div>
+<div class="card persona"><svg viewBox="0 0 170 145"><path d="M28 119V48H143V119Z" fill="#5b3b24" stroke="#ffb258" stroke-width="5"/><rect x="62" y="23" width="59" height="50" fill="#3c5661"/><rect x="32" y="113" width="30" height="20" fill="#151b1f"/><rect x="126" y="113" width="30" height="20" fill="#151b1f"/><path d="M116 92h49v12h-49" fill="#ffb258"/><circle cx="98" cy="60" r="18" fill="#ff6977"/></svg>
+<div class="role">ПЕРВЫЙ БОСС</div><h3>ПОГРУЗЧИК-07</h3><p>Заражённая грузовая машина, слившаяся с биомассой. Таранит, выпускает волны энергии и зовёт мелких монстров.</p></div>
+<div class="card persona"><svg viewBox="0 0 170 145"><circle cx="87" cy="60" r="48" fill="#273942" stroke="#af4aff" stroke-width="4"/><path d="M52 49L119 49M53 74L118 74" stroke="#e18aff" stroke-width="11"/><path d="M85 9V116M39 59H134" stroke="#723783" stroke-width="10"/></svg>
+<div class="role">ТАЙНА КОМПЛЕКСА</div><h3>Образец «Матерь»</h3><p>Сеть-инкубатор, способная создавать новые виды существ. В её устройстве скрыт механизм всей катастрофы.</p></div>
+</div></section>
+<section id="map"><h2>03 / Первый уровень: Нулевая смена</h2><p class="section-intro">Небольшая, но законченная история. Продвижение по зданиям, свободная развилка, две оборонительные ситуации и финальный босс. Игрок всегда видит цель.</p>
+<div class="levelmap">
+<svg viewBox="0 0 220 560" role="img" aria-label="Схема первого уровня от пробуждения до эвакуации">
+<defs><pattern id="f" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" stroke="#3d6f7c" fill="none" stroke-width=".7"/></pattern></defs>
+<g fill="#1b3a47" stroke="#4b8d9d" stroke-width="2"><rect x="75" y="480" width="70" height="54" rx="4"/><rect x="100" y="450" width="20" height="32"/><rect x="27" y="367" width="166" height="82" rx="4"/><path d="M100 367V334H65V275H100V245M120 334H157V275H120V245" stroke="#4b8d9d" stroke-width="20" fill="none"/><path d="M100 367V334H65V275H100V245M120 334H157V275H120V245" stroke="#1b3a47" stroke-width="16" fill="none"/><rect x="41" y="217" width="138" height="67" rx="4"/><rect x="99" y="190" width="22" height="29"/><rect x="20" y="126" width="180" height="65" rx="4"/><rect x="100" y="93" width="20" height="34"/><rect x="31" y="25" width="158" height="68" rx="4"/><rect x="100" y="3" width="20" height="24"/></g>
+<g fill="url(#f)"><rect x="75" y="480" width="70" height="54"/><rect x="27" y="367" width="166" height="82"/><rect x="41" y="217" width="138" height="67"/><rect x="20" y="126" width="180" height="65"/><rect x="31" y="25" width="158" height="68"/></g>
+<g text-anchor="middle" font-family="system-ui" font-weight="800" font-size="11" fill="#dbf2fa">
+<text x="110" y="503">ПРОБУЖДЕНИЕ</text><text x="110" y="519" fill="#47d9f4">СТАРТ</text><text x="110" y="403">СКЛАД</text><text x="110" y="418" fill="#ffb257">ВОРОТА 1</text>
+<text x="68" y="309">МЕД</text><text x="153" y="309">ОРУЖ</text>
+<text x="110" y="239">ГЕНЕРАТОР</text><text x="110" y="260" fill="#67edb2">29 СЕК.</text>
+<text x="110" y="151">ЛИТЕЙНЫЙ ЦЕХ</text><text x="110" y="169" fill="#ffb257">СУПЕРОРУЖИЕ</text>
+<text x="110" y="53">ПОГРУЗЧИК-07</text><text x="110" y="72" fill="#fb6770">БОСС</text><text x="110" y="14" font-size="9" fill="#67edb2">ЛИФТ</text>
+</g></svg>
+<div><div class="legend"><span><i class="sw" style="background:#47d9f4"></i>Цель, двери, маршрут</span><span><i class="sw" style="background:#ffb257"></i>Оружие и опасности</span><span><i class="sw" style="background:#67edb2"></i>Восстановление и генератор</span><span><i class="sw" style="background:#fb6770"></i>Боссы и сильные враги</span></div>
+<details open><summary>00:00–01:00 · Аварийное пробуждение</summary><div>ЭХО активирует экзокостюм. Игрок осваивает передвижение, автострельбу и «Импульс». Первые противники медленные, ошибаться не страшно.</div></details>
+<details><summary>01:00–02:00 · Приёмный склад</summary><div>Цепные взрывы, ящики как препятствия и первая прокачка. После двенадцати убитых монстров открывается шлюз. Противники различаются скоростью и поведением.</div></details>
+<details><summary>02:00–03:00 · Развилка</summary><div>Левый путь через медпункт лечит; правый через оружейный конвейер улучшает урон. Оба маршрута сходятся в энергоблоке. Развилка не тупиковая.</div></details>
+<details><summary>03:00–04:00 · Генератор</summary><div>Герой подходит к консоли и нажимает «Активировать». За 29 секунд ему нужно продержаться под натиском монстров. После успеха открывается дверь в цех.</div></details>
+<details><summary>04:00–06:00 · Литейный цех</summary><div>Больше открытого пространства, конвейеры, крупные машины, взрывные монстры. В золотом контейнере лежит батарея для реакторного залпа. После 24 убийств открывается путь к боссу.</div></details>
+<details><summary>06:00–08:00 · ПОГРУЗЧИК-07 и лифт</summary><div>Босс делает рывки, рассылает импульсные выстрелы, при половине здоровья вызывает быстрых противников. После победы открывается лифт. ЭХО сообщает: внешний шлюз комплекса самостоятельно начал открываться.</div></details>
+</div></div></section>
+<section id="weapons"><h2>04 / Бои, оружие и интерфейс</h2>
+<div class="grid"><div class="card"><div class="num">СЛОТ A / ОСНОВНОЙ</div><h3>Автомат, дробовик, плазма</h3><p>Два одновременно носимых вида. Стреляют автоматически. Большая часть боеприпасов бесконечна, но есть темп и перегрев. Маленькая кнопка меняет оружие.</p></div>
+<div class="card"><div class="num">ПАССИВНЫЕ</div><h3>Дроны, электричество, взрывы</h3><p>До трёх автономных подсистем, без дополнительных кнопок. Прокачка может создавать синергии между системами.</p></div>
+<div class="card"><div class="num">БОЛЬШАЯ КНОПКА</div><h3>Импульс</h3><p>Поражает, оглушает и отбрасывает ближайших врагов. Показывает секунды до готовности; при первом применении ЭХО объясняет эффект.</p></div>
+<div class="card"><div class="num">ЗОЛОТАЯ КНОПКА</div><h3>Реакторный залп</h3><p>Появляется только после подбора особой батареи. Мощная атака по площади. Потом заряжается от получения опыта.</p></div>
+<div class="card"><div class="num">ЗЕЛЁНЫЕ КАПСУЛЫ</div><h3>Здоровье</h3><p>Редкие аптечки. Ветвь через медпункт также восстанавливает здоровье.</p></div>
+<div class="card"><div class="num">ГОЛУБЫЕ ЯДРА</div><h3>Опыт, а не деньги</h3><p>Выпадает один крупный кристалл вместо облака мелких. Ближайшие притягиваются сами. Набранный уровень открывает выбор из трёх карточек.</p></div></div>
+<div class="storybox"><strong>Основное правило UX:</strong> все способности должны иметь явное название, заметную анимацию действия и понятное состояние готовности. Новые кнопки появляются только после получения соответствующей способности.</div>
+<div class="scroll"><table><thead><tr><th>Противник</th><th>Поведение</th><th>Как с ним справиться</th></tr></thead><tbody>
+<tr><td>Ползун</td><td>Массовый ближний бой</td><td>Сдерживать расстоянием</td></tr>
+<tr><td>Бегун</td><td>Быстро преследует, мало здоровья</td><td>Использовать импульс</td></tr>
+<tr><td>Броненосец</td><td>Медленный, прочный, сильный удар</td><td>Пробивающее оружие</td></tr>
+<tr><td>Плевун</td><td>Стреляет издалека</td><td>Быстро менять позицию</td></tr>
+<tr><td>Перегруженный</td><td>Взрывается при смерти</td><td>Запускать цепную реакцию</td></tr>
+<tr><td>ПОГРУЗЧИК-07</td><td>Танк, залпы и усиление второй фазы</td><td>Уклонение + залп + защита</td></tr>
+</tbody></table></div>
+</section>
+<section id="roadmap"><h2>05 / Графика и развитие проекта</h2><p class="section-intro">Игровая эстетика — выразительная, читаемая стилизация 3D. Нельзя допускать, чтобы взрывы скрывали героя, врагов и путь.</p>
+<div class="cols2"><div class="card"><h3>Что уже заложено в Unity</h3><ul><li>Оригинальная геометрия заводских помещений.</li><li>Промышленные текстуры, трубы, конвейеры, терминалы и аварийные лампы.</li><li>Низкополигональный экзокостюм Е-7 и разные силуэты монстров.</li><li>3D-камера, свет, туман, выстрелы, ударные волны.</li><li>Коридоры, игровые ворота, препятствия и карта маршрута.</li><li>Сцены боя, генератор, мини-сюжет, босс, лифт и прокачка.</li></ul></div>
+<div class="card"><h3>Что дорабатываем после первого запуска</h3><ul><li>Полноценные анимированные 3D-модели, включая экзокостюм и босса.</li><li>Эффекты взрывов с частицами и более красивым светом.</li><li>Аудиодизайн оружия, заводских механизмов и ЭХО.</li><li>Скрытие ближних стен, которые могут закрывать обзор.</li><li>Баланс оружия, награды, плотность толп, работа на Android.</li><li>Сохранение прогресса кампании и следующие пять секторов.</li></ul></div></div>
+<div class="chips"><span class="chip">Холодный металл: #132c3e</span><span class="chip">Цель: #47d9f4</span><span class="chip">Опасность: #ffb257</span><span class="chip">Здоровье: #67edb2</span><span class="chip">Элита: #fb6770</span></div>
+</section>
+<section id="decisions"><h2>06 / Что можно утвердить позже</h2><p class="section-intro">Эти вопросы не препятствуют созданию первого уровня. Я заложил решения по умолчанию, которые можно изменить без переписывания всей игры.</p>
+<div class="grid">
+<div class="card"><div class="num">СЮЖЕТ</div><h3>Оператор без имени</h3><p>По умолчанию герой носит шлем и обозначается Е-7. Позднее можно выбрать героя и внешний вид.</p></div>
+<div class="card"><div class="num">ПРОГРЕСС</div><h3>Кампании по секторам</h3><p>Миссия 7–12 минут. Временные улучшения сбрасываются после миссии, открытые типы оружия сохраняются.</p></div>
+<div class="card"><div class="num">СТИЛЬ</div><h3>Bio-industrial action</h3><p>Стилизованный реализм: масштабная техника, читаемые враги и яркие спецэффекты, без чрезмерного хоррора.</p></div>
+</div><div class="cta" style="margin-top:23px"><strong>Следующее решение по игре:</strong> после первого запуска Unity-уровня оценим, нравится ли коридорная структура. Если да — улучшать графику и производительность; если нет — расширить заводские комнаты и сократить переходы. Не добавлять новые системы раньше проверки игрового ощущения.</div></section>
+<footer>Monster Mayhem · Game Vision 0.2 · 11 октября 2026 · Рабочий проект / независимая игра.<br>Этот HTML описывает план кампании и первую миссию. Иллюстрация выше — концептуальная схема, не снимок собранного APK.</footer>
+</main></body></html>

@@ -107,7 +107,7 @@ function damage(e,dmg,mode='',chainDepth=0){if(e.dead||!state?.playing)return; i
  if(e.kind==='spark')pending.push({x:e.x,y:e.y,kind:'chain',range:2.85,dmg:26,chainDepth:chainDepth+1});
  if(e.kind==='ember')pending.push({x:e.x,y:e.y,kind:'fire',range:2.5,dmg:29,chainDepth:chainDepth+1});
  if(e.kind==='boss'){state.bossDefeated=true;toast('КОЛОСС УНИЧТОЖЕН!');sound(170,.5,'sawtooth',.08);}else if(state.kills%8===0)sound(400,.10,'triangle',.03);
- let count=e.kind==='boss'?6:1;for(let i=0;i<count;i++)orbs.push({x:e.x+rand(-.7,.7),y:e.y+rand(-.7,.7),r:rand(.12,.18),val:e.kind==='boss'?(i<4?5:6):e.xp,age:0});
+ let count=e.kind==='boss'?6:1;for(let i=0;i<count;i++)orbs.push({x:e.x+rand(-.7,.7),y:e.y+rand(-.7,.7),r:rand(.12,.18),val:e.kind==='boss'?9:e.xp,age:0});
  if(state.hero.lifeSteal&&Math.random()<state.hero.lifeSteal)state.hero.hp=Math.min(state.hero.maxHp,state.hero.hp+2);
  }else if(mode==='shot'&&Math.random()<.16)particle(e.x,e.y,.7,e.glow,2,.6);
 }
